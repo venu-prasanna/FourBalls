@@ -32,4 +32,15 @@ public class FourBalls extends PApplet{
         }
     }
 
+    @Override
+    public void draw() {
+        drawCircle();
+    }
+
+    public void drawCircle() {
+        for (Ball ball : BALLS) {
+            ellipse( 1, ball.height, ball.diameter, ball.diameter);
+        }
+    }
+
 }
