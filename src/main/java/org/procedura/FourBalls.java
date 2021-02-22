@@ -7,10 +7,11 @@ public class FourBalls extends PApplet {
     private static final int WIDTH = 640;
     private static final int HEIGHT = 400;
     private static final int DIAMETER = 10;
+    private static int SPEED = 1;
 
 
     public static void main(String[] args) {
-        PApplet.main("org.procedural.FourBalls",args);
+        PApplet.main("org.procedural.FourBalls", args);
     }
 
     @Override
@@ -21,18 +22,19 @@ public class FourBalls extends PApplet {
     }
 
     @Override
-    public void draw(){
+    public void draw() {
         drawCircle(1, (float) (4.0 / 5.0));
         drawCircle(2, (float) (3.0 / 5.0));
         drawCircle(3, (float) (2.0 / 5.0));
         drawCircle(4, (float) (1.0 / 5.0));
+        SPEED++;
     }
 
-    private void drawCircle(int unit,float ratio){
-        ellipse(10,getHeight(ratio),DIAMETER,DIAMETER);
+    private void drawCircle(int unit, float ratio) {
+        ellipse(SPEED * unit, getHeight(ratio), DIAMETER, DIAMETER);
     }
 
-    private int getHeight(float ratio){
+    private int getHeight(float ratio) {
         return (int) (HEIGHT - (HEIGHT * ratio));
     }
 }
