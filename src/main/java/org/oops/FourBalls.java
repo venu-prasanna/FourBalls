@@ -9,6 +9,7 @@ public class FourBalls extends PApplet{
     public static final int HEIGHT = 400;
     public static final int DIAMETER = 10;
     private static final int TOTAL_BALLS = 4;
+    private static int SPEED = 1;
     public ArrayList<Ball> BALLS = new ArrayList<Ball>();
 
     public static void main(String[] args) {
@@ -35,11 +36,12 @@ public class FourBalls extends PApplet{
     @Override
     public void draw() {
         drawCircle();
+        SPEED++;
     }
 
     public void drawCircle() {
         for (Ball ball : BALLS) {
-            ellipse( 1, ball.height, ball.diameter, ball.diameter);
+            ellipse( SPEED * ball.speed, ball.height, ball.diameter, ball.diameter);
         }
     }
 
