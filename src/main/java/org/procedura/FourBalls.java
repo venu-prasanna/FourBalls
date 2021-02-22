@@ -8,6 +8,7 @@ public class FourBalls extends PApplet {
     private static final int HEIGHT = 400;
     private static final int DIAMETER = 10;
     private static int SPEED = 1;
+    private static final int TOTAL_BALLS = 4;
 
 
     public static void main(String[] args) {
@@ -23,18 +24,21 @@ public class FourBalls extends PApplet {
 
     @Override
     public void draw() {
-        drawCircle(1, (float) (4.0 / 5.0));
-        drawCircle(2, (float) (3.0 / 5.0));
-        drawCircle(3, (float) (2.0 / 5.0));
-        drawCircle(4, (float) (1.0 / 5.0));
+        for (int unit = 1; unit < TOTAL_BALLS + 1; unit++) {
+            drawCircle(unit, calculateRatio(unit));
+        }
         SPEED++;
     }
 
-    private void drawCircle(int unit, float ratio) {
-        ellipse(SPEED * unit, getHeight(ratio), DIAMETER, DIAMETER);
+    private float calculateRatio(int unit) {
+        return ((TOTAL_BALLS - unit + 1) / (float) (TOTAL_BALLS + 1));
     }
 
-    private int getHeight(float ratio) {
+    private void drawCircle(int unit, float ratio) {
+        ellipse(SPEED * unit, calculateHeight(ratio), DIAMETER, DIAMETER);
+    }
+
+    private int calculateHeight(float ratio) {
         return (int) (HEIGHT - (HEIGHT * ratio));
     }
 }
